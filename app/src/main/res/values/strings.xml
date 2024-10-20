@@ -19,10 +19,17 @@
     <string name="change_theme">Change</string>
     <string name="restart">Restart:</string>
     <string name="restartbuttontext">Restart</string>
-    <string name="instructions" >Welcome to What Am I?! Its a guessing game with increasingly difficult puzzles as you proceed. The puzzles are simple at start, but as the game progresses, they get harder. The objective is to work through each puzzle and overcome the growing difficulty.</string>
+    <string name="welcome">Welcome to "What Am I?"</string>
+    <string name="difficultycurve">Difficulty Curve"</string>
+    <string name="scorebase1">Scoring Base"</string>
+    <string name="instructions1">A guessing game with increasingly difficult puzzles as you proceed</string>
+    <string name="instructions2">The puzzles are simple at start, but as the game progresses, they get harder.
+        The objective is to work through each puzzle and overcome the growing difficulty.</string>
     <string name="scoringbase"> There are 25 points available to you. Points are awarded for each accurate response, with easy answers worth one point, medium answers worth three, and hard answers worth five. Your score drops by one point for an incorrect response. If your score hits zero, the game is over. Try to score as high as you can!</string>
+
     <string name="back_button">Back Button</string>
     <string name="how_to_play">HOW TO PLAY</string>
     <string name="logo">logo</string>
+    <string name="diff">image</string>
     <string name="resetbutton">resetbutton</string>
 </resources>
