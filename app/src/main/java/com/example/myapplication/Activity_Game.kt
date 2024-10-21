@@ -1,13 +1,14 @@
 package com.example.myapplication
 
+import com.example.myapplication.Game
 import com.example.myapplication.DatabaseHelper
-import com.example.myapplication.DatabaseHelper.Riddle
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.SoundPool
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -15,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import retrofit2.*
 
 class Activity_Game : AppCompatActivity() {
 
@@ -31,23 +33,22 @@ class Activity_Game : AppCompatActivity() {
     private lateinit var tv_optionThree: TextView
     private lateinit var ScoreOutput: TextView
     private lateinit var Score: TextView
-    private lateinit var DatabaseHelper: DatabaseHelper
-    private var currentRiddle: Riddle? = null
+
+    private var currentQuestionIndex = 0
+    private var score = 0
+    private lateinit var questions: List<Game> // Assuming Game contains question and options
+    private lateinit var databaseHelper: DatabaseHelper
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        // Initialize views
         tv_question = findViewById(R.id.tv_question)
         tv_optionOne = findViewById(R.id.tv_optionOne)
         tv_optionTwo = findViewById(R.id.tv_optionTwo)
         tv_optionThree = findViewById(R.id.tv_optionThree)
-
-        DatabaseHelper = DatabaseHelper()
-
-        // Load a riddle (e.g., with ID 1)
-        loadRiddle(1)
 
         // Initialize sound pool
         val soundPool = SoundPool.Builder().build()
@@ -63,15 +64,17 @@ class Activity_Game : AppCompatActivity() {
         ResetButton = findViewById(R.id.ResetButton)
         ResetButton.setOnClickListener {
             soundPool.play(soundId, 1f, 1f, 1, 0, 1f)
-            // Restart the game or reset logic can be implemented here
+            // resetGame()
         }
 
+        // Initialize SharedPreferences for dark mode
         sharedPreferences = getSharedPreferences("dark_mode_pref", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
 
         val isDarkModeEnabled = sharedPreferences.getBoolean("is_dark_mode_enabled", false)
         updateUI(isDarkModeEnabled)
 
+        // Initialize UI components
         screen = findViewById(R.id.screen)
         brownbar = findViewById(R.id.brownbar)
         submitanswer = findViewById(R.id.submitanswer)
@@ -84,43 +87,25 @@ class Activity_Game : AppCompatActivity() {
         } else {
             updateLightModeUI()
         }
+    }
+    private fun fetchRiddles() {
+        // Make the network call directly with Retrofit's enqueue
+        DatabaseHelper.apiService.getRiddles().enqueue(object: Callback<List<Game>> {
+            override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
+                if (response.isSuccessful) {
+                    val riddles = response.body()
+                    //
+                } else {
+                    Log.e("Riddles", "Error: ${response.code()}")
+                }
+            }
 
-
+            override fun onFailure(call: Call<List<Game>>, t: Throwable) {
+                Log.e("Riddles", "Failure: ${t.message}")
+            }
+        })
     }
 
-    private fun loadRiddle(riddleId: Int) {
-        currentRiddle = DatabaseHelper.getRiddle(riddleId)
-
-        currentRiddle?.let { riddle ->
-            tv_question.text = riddle.question
-            tv_optionOne.text = riddle.choices.getOrNull(0) ?: ""
-            tv_optionTwo.text = riddle.choices.getOrNull(1) ?: ""
-            tv_optionThree.text = riddle.choices.getOrNull(2) ?: ""
-
-            // Set click listeners for answer options
-            tv_optionOne.setOnClickListener { checkAnswer(riddle, riddle.choices[0]) }
-            tv_optionTwo.setOnClickListener { checkAnswer(riddle, riddle.choices[1]) }
-            tv_optionThree.setOnClickListener { checkAnswer(riddle, riddle.choices[2]) }
-        } ?: run {
-            // Handle case where no riddle is found
-            tv_question.text = "No riddle found."
-            tv_optionOne.text = ""
-            tv_optionTwo.text = ""
-            tv_optionThree.text = ""
-        }
-    }
-
-
-    private fun checkAnswer(riddle: Riddle, selectedChoice: String) {
-        if (selectedChoice == riddle.answer) {
-            // Correct answer logic
-            ScoreOutput.text = "Correct! You earned ${riddle.points} points."
-            // Optionally, load the next riddle or reset the game
-        } else {
-            // Incorrect answer logic
-            ScoreOutput.text = "Wrong! The correct answer was: ${riddle.answer}."
-        }
-    }
 
     private fun updateUI(isDarkModeEnabled: Boolean) {
         if (isDarkModeEnabled) {
