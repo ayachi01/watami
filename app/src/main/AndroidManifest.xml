@@ -20,19 +20,19 @@
         <activity
             android:name=".How_To_Play"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            />
         <activity
             android:name=".Activity_Game_to_Settings"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            />
         <activity
             android:name=".Activity_Game"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            />
         <activity
             android:name=".Activity_Settings"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+             />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -16,13 +16,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/TOOLBAR"
         android:layout_width="match_parent"
         android:layout_height="104dp"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,8 +32,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
+    <!--Question / Multiple choice-->
+
+
     <View
-        android:id="@+id/brownbar"
+        android:id="@+id/brownbar2"
         style="@style/BAR"
         android:layout_width="match_parent"
         android:layout_height="9dp"
@@ -41,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.117" />
 
     <ImageButton
         android:id="@+id/settings2"
@@ -59,7 +63,7 @@
         app:layout_constraintVertical_bias="0.038" />
 
     <ImageButton
-        android:id="@+id/ResetButton"
+        android:id="@+id/resetbutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="?android:attr/selectableItemBackground"
@@ -83,10 +87,10 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="sans-serif-black"
         android:text="@string/score"
-        android:textSize="40sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
@@ -97,11 +101,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="25"
-        android:textSize="40sp"
+        android:text="0"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
@@ -115,56 +119,58 @@
         android:gravity="center"
         android:text="Question"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/screen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.171" />
+
+    <!-- Options with borders -->
 
     <Button
         android:id="@+id/submitanswer"
         style="@style/SUBMIT"
-        android:layout_width="179dp"
-        android:layout_height="59dp"
+        android:layout_width="155dp"
+        android:layout_height="54dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854" />
+        app:layout_constraintVertical_bias="0.902" />
 
     <Button
         android:id="@+id/choice1"
-        android:layout_width="308dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="57dp"
         android:background="@drawable/answers_button"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.538" />
 
     <Button
         android:id="@+id/choice2"
-        android:layout_width="308dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="57dp"
         android:background="@drawable/answers_button"
         android:text="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="0.653" />
 
     <Button
         android:id="@+id/choice3"
-        android:layout_width="308dp"
-        android:layout_height="70dp"
+        android:layout_width="300dp"
+        android:layout_height="57dp"
         android:background="@drawable/answers_button"
         android:text="3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -172,7 +178,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.774" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
