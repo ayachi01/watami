@@ -28,6 +28,7 @@
     <color name="light_back_button_tint_color">#946658</color>
     <color name="light_mode_score">#946658</color>
     <color name="light_mode_toolbar">#FFFFFF</color>
+    <color name="light_mode_answers_text">#000000</color>
 
     <!-- UI ELEMENTS FOR DARK THEME.. -->
     <color name="dark_mode_text">#F4F4F4</color>
@@ -45,5 +46,5 @@
     <color name="dark_mode_score">#F4F4F4</color>
     <color name="dark_mode_buttons_settings">#AB7FA2</color>
     <color name="dark_mode_toolbar">#000000</color>
-
+    <color name="dark_mode_answers_text">#FFFFFF</color>
 </resources>

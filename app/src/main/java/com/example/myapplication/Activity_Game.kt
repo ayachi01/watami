@@ -12,6 +12,7 @@
     import android.widget.Button
     import android.widget.ImageButton
     import android.widget.TextView
+    import android.widget.Toast
     import androidx.appcompat.app.AppCompatActivity
     import androidx.appcompat.app.AppCompatDelegate
     import androidx.core.content.ContextCompat
@@ -27,29 +28,29 @@
         private lateinit var submitanswer: Button
         private lateinit var ResetButton: ImageButton
         private lateinit var tv_question: TextView
-        private lateinit var tv_optionOne: TextView
-        private lateinit var tv_optionTwo: TextView
-        private lateinit var tv_optionThree: TextView
         private lateinit var ScoreOutput: TextView
         private lateinit var Score: TextView
         private lateinit var toolbar: Toolbar
+        private lateinit var choice1 : Button
+        private lateinit var choice2: Button
+        private lateinit var chocie3: Button
 
-        private var currentQuestionIndex = 0
-        private var score = 0
-        //private lateinit var questions: List<Game> // Assuming Game contains question and options
-       // private lateinit var databaseHelper: DatabaseHelper
+        private var mSelectedOptionPosition = 0
+        private var mCurrentPosition = 1
+        private var difficulty: String = "easy"
 
         @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_game)
 
-            // Initialize views
             tv_question = findViewById(R.id.tv_question)
-            tv_optionOne = findViewById(R.id.tv_optionOne)
-            tv_optionTwo = findViewById(R.id.tv_optionTwo)
-            tv_optionThree = findViewById(R.id.tv_optionThree)
-            toolbar = findViewById<Toolbar>(R.id.toolbar)
+            screen = findViewById(R.id.screen)
+            brownbar = findViewById(R.id.brownbar)
+            submitanswer = findViewById(R.id.submitanswer)
+            ScoreOutput = findViewById(R.id.ScoreOutput)
+            Score = findViewById(R.id.Score)
+            toolbar = findViewById(R.id.toolbar)
 
             // Initialize sound pool
             val soundPool = SoundPool.Builder().build()
@@ -75,18 +76,43 @@
             val isDarkModeEnabled = sharedPreferences.getBoolean("is_dark_mode_enabled", false)
             updateUI(isDarkModeEnabled)
 
-            // Initialize UI components
-            screen = findViewById(R.id.screen)
-            brownbar = findViewById(R.id.brownbar)
-            submitanswer = findViewById(R.id.submitanswer)
-            ScoreOutput = findViewById(R.id.ScoreOutput)
-            Score = findViewById(R.id.Score)
-
             // Dark mode UI setup
             if (isDarkModeEnabled) {
                 updateDarkModeUI()
             } else {
                 updateLightModeUI()
+            }
+        }
+
+        fun onClick(v: View?) {
+            when (v?.id) {
+                R.id.choice1 -> {
+                    selectedOptionView(choice1, 1)
+                }
+                R.id.choice2 -> {
+                    selectedOptionView(choice2, 2)
+                }
+                R.id.choice3 -> {
+                    selectedOptionView(chocie3, 3)
+                }
+                R.id.submitanswer -> {
+                    if (mSelectedOptionPosition != 0) {
+                        mCurrentPosition++
+                        // Scoring
+                        if (isAnswerCorrect(mSelectedOptionPosition)) {
+                            when (difficulty) {
+                                "easy" -> addPoints(1)
+                                "medium" -> addPoints(3)
+                                "hard" -> addPoints(5)
+                            }
+                        } else {
+                            deductPoints(1)
+                        }
+                    } else {
+                        // Handle the case when no option is selected
+                        Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
 
@@ -120,6 +146,27 @@
             ScoreOutput.setTextColor(ContextCompat.getColor(this, R.color.light_mode_score))
             settings2.setImageResource(R.drawable.settingsbutton)
             ResetButton.setImageResource(R.drawable.resetbutton)
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_bar))
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_toolbar))
         }
+
+
+        private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+            // Highlight selected option
+            // Update mSelectedOptionPosition
+            mSelectedOptionPosition = selectedOptionNum
+            // Reset other options if needed
+        }
+        private fun isAnswerCorrect(selectedOption: Int): Boolean {
+            // Implement logic to check if the selected option is correct
+            return true // Placeholder
+        }
+        private fun addPoints(points: Int) {
+            var score = points
+            ScoreOutput.text = score.toString() // Update score display
+        }
+        private fun deductPoints(points: Int) {
+            var score = points
+            ScoreOutput.text = score.toString() // Update score display
+        }
+
     }

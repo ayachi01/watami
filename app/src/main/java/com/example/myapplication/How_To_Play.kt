@@ -80,7 +80,7 @@ class How_To_Play : AppCompatActivity() {
         backtogame.setImageResource(R.drawable.backbutton_dark)
         instructions.setTextColor(ContextCompat.getColor(this,R.color.dark_mode_mdtext))
         scoringbase.setTextColor(ContextCompat.getColor(this,R.color.dark_mode_mdtext))
-        toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.dark_mode_bar))
+        toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.dark_mode_toolbar))
 
     }
     private fun updateLightModeUI() {
@@ -90,5 +90,6 @@ class How_To_Play : AppCompatActivity() {
         backtogame.setImageResource(R.drawable.backbutton)
         instructions.setTextColor(ContextCompat.getColor(this,R.color.light_mode_mdtext))
         scoringbase.setTextColor(ContextCompat.getColor(this,R.color.light_mode_mdtext))
+        toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.light_mode_toolbar))
     }
 }
