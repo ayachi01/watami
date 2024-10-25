@@ -36,7 +36,7 @@
 
 
     <View
-        android:id="@+id/brownbar2"
+        android:id="@+id/brownbar"
         style="@style/BAR"
         android:layout_width="match_parent"
         android:layout_height="9dp"
