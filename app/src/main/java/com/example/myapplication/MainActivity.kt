@@ -19,6 +19,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import androidx.recyclerview.widget.LinearLayoutManager
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editor: SharedPreferences.Editor
     private lateinit var screen: View
     private lateinit var howtoplay: Button
+    private lateinit var dbHelper: DatabaseHelper // Declare dbHelper at the class level
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,7 +98,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             updateLightModeUI()
         }
+
     }
+
 
     private fun updateUI(isDarkModeEnabled: Boolean) {
         if (isDarkModeEnabled) {

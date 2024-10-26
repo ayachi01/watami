@@ -87,7 +87,7 @@
         <item name="android:textColor">@color/dark_mode_whatami</item>
     </style>
 
-    <style name="TOOLBAR.Dark">
+    <style name="TOOLBAR.DArk">
         <item name="android:background">@color/dark_mode_toolbar</item>
     </style>
 

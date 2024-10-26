@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.INTERNET"/>
 
-
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,21 +18,16 @@
 
         <activity
             android:name=".How_To_Play"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Activity_Game_to_Settings"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Activity_Game"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            />
+            android:exported="false" />
         <activity
             android:name=".Activity_Settings"
-            android:exported="false"
-             />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

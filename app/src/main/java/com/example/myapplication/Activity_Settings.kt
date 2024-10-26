@@ -30,8 +30,7 @@ class Activity_Settings : AppCompatActivity() {
     private lateinit var darkmode: TextView
     private lateinit var screen: View
     private lateinit var toolbar: Toolbar
-
-
+    
     @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +121,7 @@ class Activity_Settings : AppCompatActivity() {
             ChangeTheme.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_buttons_settings))
             ChangeTheme.setTextColor(ContextCompat.getColor(this, R.color.light_mode_buttons_text))
             backtogame.setImageResource(R.drawable.backbutton )
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_toolbar))
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_bar))
 
         }
     }

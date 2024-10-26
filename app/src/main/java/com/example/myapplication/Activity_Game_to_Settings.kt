@@ -140,7 +140,7 @@ class Activity_Game_to_Settings : AppCompatActivity() {
             backtogame.setImageResource(R.drawable.backbutton)
             textView.setTextColor(ContextCompat.getColor(this, R.color.light_mode_text))
             exit.setImageResource(R.drawable.exitbutton)
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_toolbar))
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_bar))
         }
     }
 }
