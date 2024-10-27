@@ -22,7 +22,8 @@
     <string name="welcome">Welcome to "What Am I?"</string>
     <string name="difficultycurve">Difficulty Curve"</string>
     <string name="scorebase1">Scoring Base"</string>
-    <string name="instructions1">A guessing game with increasingly difficult puzzles as you proceed</string>
+    <string name="instructions1">"What Am I?" is a guessing game to challenge the player\'s
+        knowledge and skill to tricky riddle questions. It is an excellent brain game for anyone who seeks challenges.</string>
     <string name="instructions2">The puzzles are simple at start, but as the game progresses, they get harder.
         The objective is to work through each puzzle and overcome the growing difficulty.</string>
     <string name="scoringbase"> There are 25 points available to you. Points are awarded for each accurate response, with easy answers worth one point, medium answers worth three, and hard answers worth five. Your score drops by one point for an incorrect response. If your score hits zero, the game is over. Try to score as high as you can!</string>
