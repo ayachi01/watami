@@ -90,5 +90,4 @@
     <style name="TOOLBAR.Dark">
         <item name="android:background">@color/dark_mode_toolbar</item>
     </style>
-
 </resources>

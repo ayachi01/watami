@@ -124,6 +124,7 @@ class Activity_Settings : AppCompatActivity() {
             backtogame.setImageResource(R.drawable.backbutton )
             toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.light_mode_toolbar))
 
+
         }
     }
 }
